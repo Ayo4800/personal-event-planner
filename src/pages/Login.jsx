@@ -1,28 +1,22 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useApp } from "../context/AppContext";
-import InputField from "../components/InputField";
 
-// Login page
 export default function Login() {
   const { loginUser } = useApp();
   const navigate = useNavigate();
 
-  // Form state
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
 
-  // Message state
   const [message, setMessage] = useState("");
 
-  // Handle typing
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle login
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -45,19 +39,20 @@ export default function Login() {
       <p>Login to access your event dashboard.</p>
 
       <form onSubmit={handleSubmit}>
-        <InputField
-          label="Username"
+        <input
+          type="text"
           name="username"
           value={formData.username}
           onChange={handleChange}
+          placeholder="Username"
         />
 
-        <InputField
-          label="Password"
-          name="password"
+        <input
           type="password"
+          name="password"
           value={formData.password}
           onChange={handleChange}
+          placeholder="Password"
         />
 
         {message && <p className="info-text">{message}</p>}
