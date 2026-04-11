@@ -36,7 +36,7 @@ export default function Register() {
     if (!formData.password.trim()) newErrors.password = "Password is required.";
 
     if (formData.email && !isValidEmail(formData.email)) {
-      newErrors.email = "Enter a valid email.";
+      newErrors.email = "Enter a valid email address.";
     }
 
     return newErrors;
@@ -50,7 +50,7 @@ export default function Register() {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length > 0) {
-      setMessage("Please fix the errors.");
+      setMessage("Please fix the form errors.");
       return;
     }
 
