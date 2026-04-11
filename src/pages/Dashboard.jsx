@@ -21,7 +21,7 @@ export default function Dashboard() {
       {/* Top welcome card */}
       <div className="dashboard-hero">
         <div>
-          <h2>Welcome back, {currentUser.name} 👋</h2>
+          <h2>Welcome back, {currentUser.name} </h2>
           <p>Stay on top of your meetings, appointments, and personal plans.</p>
         </div>
 
@@ -48,7 +48,9 @@ export default function Dashboard() {
         {userEvents.length === 0 ? (
           <div className="empty-state">
             <p className="empty-title">No events yet</p>
-            <p className="empty-text">Click “Add Event” to create your first planner event.</p>
+            <p className="empty-text">
+              Click “Add Event” to create your first planner event.
+            </p>
           </div>
         ) : (
           <div className="event-list">

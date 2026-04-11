@@ -3,7 +3,7 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 
-// Import pages (we will create them next)
+// Import pages 
 import App from "./App";
 import Login from "./pages/Login";
 import Register from "./pages/Register";

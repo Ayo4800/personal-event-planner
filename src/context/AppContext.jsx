@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 // Create context
 const AppContext = createContext();
@@ -38,11 +44,11 @@ export function AppProvider({ children }) {
   // Register a new user
   const registerUser = (newUser) => {
     const usernameExists = users.some(
-      (user) => user.username.toLowerCase() === newUser.username.toLowerCase()
+      (user) => user.username.toLowerCase() === newUser.username.toLowerCase(),
     );
 
     const emailExists = users.some(
-      (user) => user.email.toLowerCase() === newUser.email.toLowerCase()
+      (user) => user.email.toLowerCase() === newUser.email.toLowerCase(),
     );
 
     if (usernameExists) {
@@ -66,7 +72,7 @@ export function AppProvider({ children }) {
   // Login user
   const loginUser = (username, password) => {
     const foundUser = users.find(
-      (user) => user.username === username && user.password === password
+      (user) => user.username === username && user.password === password,
     );
 
     if (!foundUser) {
@@ -98,7 +104,9 @@ export function AppProvider({ children }) {
   // Update event
   const updateEvent = (updatedEvent) => {
     setEvents((prev) =>
-      prev.map((event) => (event.id === updatedEvent.id ? updatedEvent : event))
+      prev.map((event) =>
+        event.id === updatedEvent.id ? updatedEvent : event,
+      ),
     );
   };
 
@@ -113,7 +121,10 @@ export function AppProvider({ children }) {
 
     return events
       .filter((event) => event.userId === currentUser.id)
-      .sort((a, b) => new Date(`${a.date}T${a.time}`) - new Date(`${b.date}T${b.time}`));
+      .sort(
+        (a, b) =>
+          new Date(`${a.date}T${a.time}`) - new Date(`${b.date}T${b.time}`),
+      );
   }, [events, currentUser]);
 
   return (

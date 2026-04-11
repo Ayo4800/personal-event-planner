@@ -39,7 +39,8 @@ export default function AddEvent() {
     if (!formData.name.trim()) newErrors.name = "Event name is required.";
     if (!formData.date) newErrors.date = "Date is required.";
     if (!formData.time) newErrors.time = "Time is required.";
-    if (!formData.description.trim()) newErrors.description = "Description is required.";
+    if (!formData.description.trim())
+      newErrors.description = "Description is required.";
     if (!formData.location.trim()) newErrors.location = "Location is required.";
 
     return newErrors;

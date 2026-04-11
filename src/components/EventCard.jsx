@@ -83,7 +83,11 @@ export default function EventCard({ event }) {
             <button type="submit" className="edit-btn">
               Save
             </button>
-            <button type="button" className="delete-btn" onClick={() => setIsEditing(false)}>
+            <button
+              type="button"
+              className="delete-btn"
+              onClick={() => setIsEditing(false)}
+            >
               Cancel
             </button>
           </div>
@@ -106,7 +110,10 @@ export default function EventCard({ event }) {
               Edit
             </button>
 
-            <button className="delete-btn" onClick={() => deleteEvent(event.id)}>
+            <button
+              className="delete-btn"
+              onClick={() => deleteEvent(event.id)}
+            >
               Delete
             </button>
           </div>

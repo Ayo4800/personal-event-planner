@@ -24,7 +24,9 @@ export default function Header() {
       <div className="header-inner">
         <div className="brand-area">
           <h1 className="brand-title">Personal Event Planner</h1>
-          <p className="brand-subtitle">Organise meetings, appointments, and plans</p>
+          <p className="brand-subtitle">
+            Organise meetings, appointments, and plans
+          </p>
         </div>
 
         <nav className="nav-links">
