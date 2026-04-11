@@ -28,14 +28,11 @@ body {
 }
 
 .header-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 16px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
   flex-wrap: wrap;
+  gap: 20px;
 }
 
 .brand-area {
@@ -97,6 +94,12 @@ body {
   max-width: 1100px;
   margin: 0 auto;
   padding: 30px 20px;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 20px 16px;
+  }
 }
 
 /* Generic page card */
@@ -293,6 +296,11 @@ button {
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
+@media (max-width: 768px) {
+  .event-edit-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 input,
 textarea {
@@ -336,23 +344,76 @@ form {
   font-size: 14px;
 }
 
-/* Responsive */
+/* Responsive design */
 @media (max-width: 768px) {
-  .dashboard-hero {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .event-edit-grid {
-    grid-template-columns: 1fr;
-  }
-
   .header-inner {
     flex-direction: column;
     align-items: flex-start;
   }
 
+  .nav-links {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .dashboard-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .dashboard-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+  .dashboard-hero h2 {
+    font-size: 24px;
+  }
+
+  .dashboard-hero-buttons {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .dashboard-hero-buttons,
+  .card-actions,
+  .nav-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .event-edit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 768px) {
+    .event-edit-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .main-content {
-    padding: 20px 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px;
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      padding: 20px 16px;
+    }
   }
 }
