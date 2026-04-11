@@ -7,6 +7,8 @@ export default function App() {
   return (
     <div className="app-container">
       <Header />
+
+      {/* Main page content */}
       <main className="main-content">
         <Outlet />
       </main>

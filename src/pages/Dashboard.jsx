@@ -1,117 +1,63 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import { useApp } from "../context/AppContext";
-import InputField from "../components/InputField";
-import TextAreaField from "../components/TextAreaField";
+import EventCard from "../components/EventCard";
 
-// Add event page
-export default function AddEvent() {
-  const { currentUser, addEvent } = useApp();
-  const navigate = useNavigate();
-
-  const [formData, setFormData] = useState({
-    name: "",
-    date: "",
-    time: "",
-    description: "",
-    location: "",
-  });
-
-  const [errors, setErrors] = useState({});
-  const [message, setMessage] = useState("");
+// Dashboard page
+export default function Dashboard() {
+  const { currentUser, userEvents } = useApp();
 
   if (!currentUser) {
     return (
       <section className="page-card">
-        <h2>Login required</h2>
-        <p>You must login before adding an event.</p>
+        <h2>You are not logged in</h2>
+        <p>Please login first.</p>
       </section>
     );
   }
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const validate = () => {
-    const newErrors = {};
-
-    if (!formData.name.trim()) newErrors.name = "Event name is required.";
-    if (!formData.date) newErrors.date = "Date is required.";
-    if (!formData.time) newErrors.time = "Time is required.";
-    if (!formData.description.trim()) newErrors.description = "Description is required.";
-    if (!formData.location.trim()) newErrors.location = "Location is required.";
-
-    return newErrors;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const validationErrors = validate();
-    setErrors(validationErrors);
-
-    if (Object.keys(validationErrors).length > 0) {
-      setMessage("Please fill in all fields.");
-      return;
-    }
-
-    addEvent(formData);
-    navigate("/dashboard");
-  };
-
   return (
-    <section className="page-card">
-      <h2>Add New Event</h2>
-      <p>Fill in the form below.</p>
+    <section className="dashboard-wrapper">
+      {/* Top welcome card */}
+      <div className="dashboard-hero">
+        <div>
+          <h2>Welcome back, {currentUser.name} 👋</h2>
+          <p>Stay on top of your meetings, appointments, and personal plans.</p>
+        </div>
 
-      <form onSubmit={handleSubmit}>
-        <InputField
-          label="Event Name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          error={errors.name}
-        />
+        <div className="dashboard-hero-buttons">
+          <Link to="/add-event">
+            <button type="button" className="primary-btn">
+              + Add Event
+            </button>
+          </Link>
 
-        <InputField
-          label="Date"
-          name="date"
-          type="date"
-          value={formData.date}
-          onChange={handleChange}
-          error={errors.date}
-        />
+          <button type="button" className="secondary-btn">
+            View This Week
+          </button>
+        </div>
+      </div>
 
-        <InputField
-          label="Time"
-          name="time"
-          type="time"
-          value={formData.time}
-          onChange={handleChange}
-          error={errors.time}
-        />
+      {/* Event list section */}
+      <div className="events-section">
+        <div className="section-header">
+          <h3>Upcoming Events</h3>
+          <p>{userEvents.length} event(s)</p>
+        </div>
 
-        <TextAreaField
-          label="Description"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          error={errors.description}
-        />
-
-        <InputField
-          label="Location"
-          name="location"
-          value={formData.location}
-          onChange={handleChange}
-          error={errors.location}
-        />
-
-        {message && <p className="info-text">{message}</p>}
-
-        <button type="submit">Save Event</button>
-      </form>
+        {userEvents.length === 0 ? (
+          <div className="empty-state">
+            <p className="empty-title">No events yet</p>
+            <p className="empty-text">Click “Add Event” to create your first planner event.</p>
+          </div>
+        ) : (
+          <div className="event-list">
+            {userEvents.map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
+        )}
+      </div>
     </section>
   );
 }
