@@ -2,12 +2,11 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useApp } from "../context/AppContext";
 
-// Fixed top navigation
+// Header navigation
 export default function Header() {
   const { currentUser, logoutUser } = useApp();
   const navigate = useNavigate();
 
-  // Logout and send user to login page
   const handleLogout = () => {
     logoutUser();
     navigate("/");
@@ -18,7 +17,7 @@ export default function Header() {
       <div className="header-inner">
         <div>
           <h1>Personal Event Planner</h1>
-          <p>Plan meetings, appointments, and social events</p>
+          <p>Plan your appointments and events</p>
         </div>
 
         <nav className="nav-links">

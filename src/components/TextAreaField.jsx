@@ -19,7 +19,6 @@ export default function TextAreaField({
         rows="4"
       />
 
-      {/* Show error message if there is one */}
       {error && <p className="error-text">{error}</p>}
     </div>
   );

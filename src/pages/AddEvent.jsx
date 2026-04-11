@@ -9,7 +9,6 @@ export default function AddEvent() {
   const { currentUser, addEvent } = useApp();
   const navigate = useNavigate();
 
-  // Form state
   const [formData, setFormData] = useState({
     name: "",
     date: "",
@@ -18,11 +17,9 @@ export default function AddEvent() {
     location: "",
   });
 
-  // Error state
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState("");
 
-  // If not logged in
   if (!currentUser) {
     return (
       <section className="page-card">
@@ -32,12 +29,10 @@ export default function AddEvent() {
     );
   }
 
-  // Handle typing
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Validate form
   const validate = () => {
     const newErrors = {};
 
@@ -50,7 +45,6 @@ export default function AddEvent() {
     return newErrors;
   };
 
-  // Save event
   const handleSubmit = (e) => {
     e.preventDefault();
 

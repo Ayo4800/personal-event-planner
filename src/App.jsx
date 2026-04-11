@@ -1,12 +1,15 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Header from "./components/Header";
 
 // Main layout component
 export default function App() {
   return (
-    <div>
-      {/* This is where pages will be displayed */}
-      <Outlet />
+    <div className="app-container">
+      <Header />
+      <main className="main-content">
+        <Outlet />
+      </main>
     </div>
   );
 }
