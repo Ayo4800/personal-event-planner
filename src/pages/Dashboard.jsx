@@ -42,7 +42,9 @@ export default function Dashboard() {
       <div className="events-section">
         <div className="section-header">
           <h3>Upcoming Events</h3>
-          <p>{userEvents.length} event(s)</p>
+          <p>
+            {userEvents.length} {userEvents.length === 1 ? "event" : "events"}
+          </p>
         </div>
 
         {userEvents.length === 0 ? (
